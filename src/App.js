@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState, useEffect } from "react";
 
 function App() {
+  const API_KEY = `2rRLJsTlQ8FptpGLqMHFM0BXJA5f4jBxNUlKeLQRYwOI4QpobCOT2pVOw9ddrq273ybB5XcgQjf4J8GGVAhfrg%3D%3D`;
+
+  const API_URL = `http://apis.data.go.kr/6260000/BusanPetAnimalInfoService/getPetAnimalInfo?serviceKey=${API_KEY}&numOfRows=30&pageNo=1&resultType=json`;
+
+  const getAnimalData = () => {
+    fetch(API_URL)
+      .then((res) => res.json())
+      .then((data) => console.log(data.getPetAnimalInfo));
+  };
+
+  useEffect(() => {
+    getAnimalData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>RESCUE119</h1>
+      <p>부산시 동물구조 현황</p>
+      <a href={API_URL}>보기</a>
+    </>
   );
 }
 
