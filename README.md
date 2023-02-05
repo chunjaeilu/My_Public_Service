@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# 공공API 활용 앱 만들기 :: 공공서비스 조회 시스템
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## GOAL
+> 행정안전부_대한민국 공공서비스 정보 API 활용
+> 
+> 대상연령, 담당부처, 키워드 등을 검색했을 때 해당하는 데이터를 출력
+> 
+> 사용자 위주의 간결하고 깔끔한 UI/UX
 
-## Available Scripts
+## ISSUES
 
-In the project directory, you can run:
+### 방대한 DB 처리
+> 총 9919개의 DB를 한번에 불러오면 트래픽 초과 오류 발생
+>
+> 한 페이지에서 불러올 수 있는 데이터는 최대 100개
 
-### `npm start`
+#### sol_1. 숫자 배열 생성 및 활용
+- 1~100 까지 숫자를 인자로 갖는 배열 생성
+- `fetch` url에 들어가는 page 변수값으로 활용
+  ```javascript
+  const numArr100 = Array.from({ length: 100 }, (_, index) => index + 1);
+  ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### sol_2. 반복문 활용 fetch 반복
+- `numArr100` 변수를 인자로 하는 반복문 작성
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 검색 결과 전역변수에 기억시키기
+> 반복문 안에 반복문(filter로 검색어와 일치하는 인자 찾기)을 작성했을 때 검색결과가 전역에 저장되지 않는 문제
+>
+> 
