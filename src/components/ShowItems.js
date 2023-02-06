@@ -1,7 +1,7 @@
-export default function Items({ serviceList }) {
+export default function ShowItems({ showList }) {
   return (
     <>
-      {serviceList.map((item, i) => {
+      {showList.map((item, i) => {
         return (
           <div className="items" key={i}>
             <h3>{item.서비스명}</h3>
