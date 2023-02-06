@@ -9,31 +9,43 @@
 
 ## ISSUES
 
-### 방대한 DB 처리
-> 총 9919개의 방대한 DB를 한번에 불러오면 트래픽 초과 오류 빈번히 발생
+### 반복 처리하는 `fetch`안에서 `useState()`로 관리하는 변수, 누적되지 않고 초기화 되는 이슈
+> DB가 여러 page로 나뉘어져 있고, 모든 데이터를 한번에 `fetch`하지 못해, 반복문으로 처리하려 하였으나
 >
-> 일반적인 `fetch`를 실행했을 때 api url을 읽어오기 전에 처리문의 `filter()`함수가 실행되어 400error 발생
+> `useState()`는 컴포넌트가 렌더링 될때마다 값을 초기화 하므로 반복문으로 `fetch`를 여러번 하는 것은 불가능하다는 결론
+>
+> 총 9919개의 데이터 중 한번에 불러올 수 있는 1000개의 데이터만 가지고 작성
+>
+> 추후 모든 데이터 불러올 수 있는 방법 학습 요함
 
-#### solution : 비동기 처리, 이중반복문 활용
-- 1~100 까지 숫자를 인자로 갖는 배열 생성 >> 이중반복문 변수값으로 활용
-- `fetch()`를 `async`, `await` 이용해 비동기 처리
+### page 구분
+> page를 각각 Home, Search, Detail로 구분하고 `react-router-dom`을 이용해 관리
+
+### DB 추가작성
+> topList description 내용 정리
+>
+> 소관기관/부서 DB 추출 및 하나의 배열로 재가공
   ```javascript
-  const numArr100 = Array.from({ length: 100 }, (_, index) => index + 1);
-  const [search, setSearch] = useState([]);
-  // 조건검색 함수
-  const getSearchData = async (major) => {
-    for (const page of numArr100) {
-      API_URL = `${URL}${api_list[0]}?&page=${page}&perPage=100&serviceKey=${API_KEY}`;
-      const res = await fetch(API_URL);
-      const data = await res.json();
-      const filteredSearch = data.data.filter((item) => item.소관기관명 === major);
-      setSearch([...search, ...filteredSearch]);
-    }
-  };
-  getSearchData(major);
+  const departmentArr = [
+    {
+      depart: "교육부",
+      sub: [
+        "유아교육정책과",
+        "교육복지정책과",
+        "방과후돌봄정책과",
+        "특수교육정책과",
+        "인재양성지원과",
+        "산학협력취창업지원과",
+        "연수과",
+        "청년장학지원과",
+        "인재선발제도과",
+        "평생학습지원과",
+      ],
+    },
+    {
+      depart: "국세청",
+      sub: ["소득지원국"],
+    },
+    ...
+  ]
   ```
-
-### 검색 결과 전역변수에 기억시키기
-> 반복문 안에 반복문(filter로 검색어와 일치하는 인자 찾기)을 작성했을 때 검색결과가 전역에 저장되지 않는 문제
->
-> 
