@@ -97,7 +97,6 @@ function App() {
       selectedSubDepart === "부서명" &&
       searchInput.length === 0
     ) {
-      selectedList = selectedList;
     }
     setShowList([...selectedList]);
   };

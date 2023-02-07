@@ -1,5 +1,5 @@
 // Header.js
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const departmentArr = [
