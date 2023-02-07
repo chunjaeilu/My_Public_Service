@@ -13,6 +13,7 @@ export default function TopList({ topList }) {
     "취약계층 대상으로 산림복지서비스 이용권 지급(1인당 연 10만원)",
     "무주택 근로자 및 서민을 위해 임차보증금의 70% 내외, 저렴한 금리로 전세자금 대출 지원",
   ];
+
   return (
     <div className="top-list-box">
       <h2>자주 찾는 서비스 TOP10</h2>
@@ -26,7 +27,7 @@ export default function TopList({ topList }) {
             <h5>{description[i]}</h5>
             <p>신청기한 : {e.신청기한}</p>
             <p>소관기관 : {e.소관기관명}</p>
-            <div className="detail-link">자세히보기</div>
+            <div className="detail-link">자세히 보기</div>
           </li>
         ))}
       </ul>

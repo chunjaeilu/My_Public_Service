@@ -1,10 +1,13 @@
 // Header.js
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const departmentArr = [
+  { depart: "소관기관", sub: ["부서명"] },
   {
     depart: "교육부",
     sub: [
+      "부서명",
       "유아교육정책과",
       "교육복지정책과",
       "방과후돌봄정책과",
@@ -19,15 +22,16 @@ const departmentArr = [
   },
   {
     depart: "국세청",
-    sub: ["소득지원국"],
+    sub: ["부서명", "소득지원국"],
   },
   {
     depart: "금융위원회",
-    sub: ["금융정책과", "산업금융과"],
+    sub: ["부서명", "금융정책과", "산업금융과"],
   },
   {
     depart: "해양수산부",
     sub: [
+      "부서명",
       "어선안전정책과",
       "심판관",
       "국제협력총괄과",
@@ -55,27 +59,28 @@ const departmentArr = [
   },
   {
     depart: "관세청",
-    sub: ["자유무역협정집행과"],
+    sub: ["부서명", "자유무역협정집행과"],
   },
   {
     depart: "통계청",
-    sub: ["교육기획과"],
+    sub: ["부서명", "교육기획과"],
   },
   {
     depart: "통일부",
-    sub: ["정착지원과", "교육기획과"],
+    sub: ["부서명", "정착지원과", "교육기획과"],
   },
   {
     depart: "법무부",
-    sub: ["인권구조과", "국적과", "여성아동인권과", "소년범죄예방팀"],
+    sub: ["부서명", "인권구조과", "국적과", "여성아동인권과", "소년범죄예방팀"],
   },
   {
     depart: "대검찰청",
-    sub: ["형사4과", "범죄수익환수과"],
+    sub: ["부서명", "형사4과", "범죄수익환수과"],
   },
   {
     depart: "국방부",
     sub: [
+      "부서명",
       "군인재해보상과",
       "특수임무수행자보상지원단",
       "군인권총괄담당관",
@@ -84,15 +89,22 @@ const departmentArr = [
   },
   {
     depart: "행정안전부",
-    sub: ["지방세특례제도과", "지역디지털서비스과", "지역공동체과"],
+    sub: ["부서명", "지방세특례제도과", "지역디지털서비스과", "지역공동체과"],
   },
   {
     depart: "경찰청",
-    sub: ["외사기획과", "교통기획과", "수사인권담당관", "수사운영지원담당관"],
+    sub: [
+      "부서명",
+      "외사기획과",
+      "교통기획과",
+      "수사인권담당관",
+      "수사운영지원담당관",
+    ],
   },
   {
     depart: "보건복지부",
     sub: [
+      "부서명",
       "기초의료보장과",
       "보육사업기획과",
       "건강증진과",
@@ -121,6 +133,7 @@ const departmentArr = [
   {
     depart: "질병관리청",
     sub: [
+      "부서명",
       "희귀질환관리과",
       "결핵정책과",
       "감염병정책총괄과",
@@ -130,11 +143,12 @@ const departmentArr = [
   },
   {
     depart: "기상청",
-    sub: ["기상융합서비스과"],
+    sub: ["부서명", "기상융합서비스과"],
   },
   {
     depart: "문화체육관광부",
     sub: [
+      "부서명",
       "관광정책과",
       "체육진흥과",
       "문화예술교육과",
@@ -148,6 +162,7 @@ const departmentArr = [
   {
     depart: "여성가족부",
     sub: [
+      "부서명",
       "청소년보호환경과",
       "다문화가족과",
       "청소년자립지원과",
@@ -162,11 +177,12 @@ const departmentArr = [
   },
   {
     depart: "농촌진흥청",
-    sub: ["재해대응과", "기술보급과"],
+    sub: ["부서명", "재해대응과", "기술보급과"],
   },
   {
     depart: "산림청",
     sub: [
+      "부서명",
       "연구지원과",
       "산불방지과",
       "산림병해충방제과",
@@ -190,6 +206,7 @@ const departmentArr = [
   {
     depart: "중소벤처기업부",
     sub: [
+      "부서명",
       "창업생태계과",
       "인력정책과",
       "소상공인성장촉진과",
@@ -215,6 +232,7 @@ const departmentArr = [
   {
     depart: "특허청",
     sub: [
+      "부서명",
       "산업재산활용과",
       "지역산업재산과",
       "산업재산정책과",
@@ -227,6 +245,7 @@ const departmentArr = [
   {
     depart: "산업통상자원부",
     sub: [
+      "부서명",
       "산업기술정책과",
       "가스산업과",
       "투자정책과",
@@ -245,11 +264,12 @@ const departmentArr = [
   },
   {
     depart: "식품의약품안전처",
-    sub: ["의약품안전평가과", "의약품정책과", "식품안전인증과"],
+    sub: ["부서명", "의약품안전평가과", "의약품정책과", "식품안전인증과"],
   },
   {
     depart: "환경부",
     sub: [
+      "부서명",
       "환경피해구제과",
       "녹색산업혁신과",
       "대기관리과",
@@ -263,6 +283,7 @@ const departmentArr = [
   {
     depart: "고용노동부",
     sub: [
+      "부서명",
       "사회적기업과",
       "산업안전보건정책과",
       "지역산업고용정책과",
@@ -294,6 +315,7 @@ const departmentArr = [
   {
     depart: "농림축산식품부",
     sub: [
+      "부서명",
       "원예경영과",
       "그린바이오산업팀",
       "식품외식산업과",
@@ -333,11 +355,12 @@ const departmentArr = [
   },
   {
     depart: "문화재청",
-    sub: ["궁능서비스기획과", "정책총괄과", "발굴제도과"],
+    sub: ["부서명", "궁능서비스기획과", "정책총괄과", "발굴제도과"],
   },
   {
     depart: "국토교통부",
     sub: [
+      "부서명",
       "주택기금과",
       "주택정비과",
       "녹색건축과",
@@ -351,12 +374,13 @@ const departmentArr = [
   },
   {
     depart: "방위사업청",
-    sub: ["방위산업진흥국", "방산일자리과", "국제협력총괄담당관"],
+    sub: ["부서명", "방위산업진흥국", "방산일자리과", "국제협력총괄담당관"],
   },
 
   {
     depart: "과학기술정보통신부",
     sub: [
+      "부서명",
       "예금사업과",
       "보험사업과",
       "국제사업과",
@@ -366,7 +390,7 @@ const departmentArr = [
   },
 ];
 
-export default function Header() {
+export default function Header({ getSearchData }) {
   // select 1뎁스
   const [selectedDepart, setSelectedDepart] = useState(departmentArr[0]);
   // select 2뎁스
@@ -375,6 +399,9 @@ export default function Header() {
   );
   // 검색어
   const [searchInput, setSearchInput] = useState("");
+
+  // search버튼 클릭시 라우팅 변환
+  const btnSearch = useNavigate();
 
   // select 1뎁스 onChange
   const onChangeDepart = (e) => {
@@ -398,9 +425,14 @@ export default function Header() {
     const inputValue = e.target.value;
     setSearchInput(inputValue);
   };
-  console.log(searchInput);
+
+  // 링크 이동 함수
+  const navLink = (route) => {
+    btnSearch(route);
+  };
+
   return (
-    <>
+    <div className="header-n-search">
       <header>
         <h1>공공서비스 조회</h1>
       </header>
@@ -438,12 +470,13 @@ export default function Header() {
             onChange={onChangeInput}
           />
           <button
-          // onClick={() =>
-          //   getSearchData({ searchInput, selectedDepart, selectedSubDepart })
-          // }
+            onClick={() => {
+              navLink("/search");
+              getSearchData(searchInput, selectedDepart, selectedSubDepart);
+            }}
           ></button>
         </div>
       </div>
-    </>
+    </div>
   );
 }

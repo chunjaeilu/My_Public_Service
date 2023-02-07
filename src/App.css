@@ -20,6 +20,17 @@ body {
   margin: 0 auto;
 }
 
+.header-n-search {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #fff;
+}
+
+main {
+  margin-top: 190px;
+  margin-bottom: 50px;
+}
 header {
   height: 80px;
   background-color: #033075;
@@ -61,7 +72,7 @@ h1 {
   width: 100%;
   padding: 10px;
   position: relative;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 1px 4px #ccc;
   z-index: 1000;
 }
 
@@ -147,4 +158,98 @@ h1 {
   position: absolute;
   right: 10px;
   bottom: 10px;
+}
+
+.theme-box {
+  width: 100%;
+  padding: 20px;
+}
+
+.theme-box h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.theme-box .theme-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.theme-box .theme-list .theme {
+  width: 60px;
+  height: 60px;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.theme-box .theme-list .theme p {
+  font-size: 12px;
+}
+
+.items {
+  width: 100%;
+  padding: 20px;
+}
+
+.items .item {
+  margin-bottom: 20px;
+  background: #f5f7fa;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.items .item h3 {
+  font-size: 16px;
+}
+
+.items .item .info-table {
+  width: 100%;
+}
+
+.items .item .info-table th {
+  width: 70px;
+  font-size: 14px;
+  vertical-align: top;
+  padding: 5px 0;
+  text-align: left;
+  color: #333;
+}
+
+.items .item .info-table td {
+  font-size: 14px;
+  padding: 5px 0;
+  color: #666;
+}
+
+.items .item .info-table td p {
+  width: 100%;
+  max-height: 40px;
+  overflow-y: hidden;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+nav .home-box {
+  margin: 0 auto;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 4px 4px #ccc;
+  position: relative;
+  bottom: 15px;
 }
