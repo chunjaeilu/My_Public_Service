@@ -45,7 +45,7 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
 > 검색 조건에 따른 결과 추출 로직 작성
 >
 > 검색결과를 `showList` 변수에 저장
-  <details>
+<details>
   <summary>펼쳐 보기</summary>
 
   ```javascript
@@ -118,7 +118,7 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
     setShowList([...selectedList]);
   };
   ```
-  </details>
+</details>
 
 ## ISSUES
 
