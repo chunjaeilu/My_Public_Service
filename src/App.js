@@ -26,7 +26,7 @@ function App() {
   // 서비스목록 불러오기
   const getServiceListData = async () => {
     const response = await axios.get(API_URL);
-    // console.log(response.data.data);
+    console.log(response.data.data);
     let data = response.data.data;
 
     // showList 가공
@@ -38,7 +38,6 @@ function App() {
 
   // 조건검색 함수
   const getSearchData = (searchInput, selectedDepart, selectedSubDepart) => {
-    console.log();
     let selectedList = serviceList;
 
     if (
