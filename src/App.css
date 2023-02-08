@@ -110,6 +110,10 @@ h1 {
   margin-bottom: 10px;
 }
 
+.top-list-box .slide-wrap {
+  position: relative;
+}
+
 .top-list-box .top-list {
   display: flex;
   width: calc(1000% + 200px);
@@ -120,11 +124,16 @@ h1 {
 
 .top-list-box .top-list li {
   width: calc(100vw - 40px);
-  height: 120px;
   background: #fff;
-  padding: 10px;
+  padding: 15px;
   border-radius: 15px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  word-break: keep-all;
 }
 
 .top-list-box .top-list li .list-header {
@@ -143,10 +152,11 @@ h1 {
   color: #666;
 }
 
-.top-list-box .top-list li > h5 {
+.top-list-box .top-list li h5 {
   font-weight: 500;
   font-size: 12px;
   color: #333;
+  margin-bottom: 5px;
 }
 
 .top-list-box .top-list li > p {
@@ -154,7 +164,7 @@ h1 {
   color: #666;
 }
 
-.top-list-box .top-list li .detail-link {
+/* .top-list-box .top-list li .detail-link {
   width: 80px;
   font-size: 12px;
   color: #666;
@@ -164,7 +174,28 @@ h1 {
   text-align: center;
   position: absolute;
   right: 10px;
-  bottom: 10px;
+  bottom: 15px;
+} */
+
+.top-list-box button {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0px 2px 2px #ccc;
+}
+
+.top-list-box .btn-prev {
+  left: -11px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.top-list-box .btn-next {
+  right: -11px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .theme-box {
@@ -182,12 +213,14 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px 50px;
+  gap: 20px;
 }
 
 .theme-box .theme-list a {
-  width: 30%;
-  height: 100px;
+  width: 40%;
+  min-width: 130px;
+  height: 10vh;
+  min-height: 100px;
 }
 
 .theme-box .theme-list .theme {
@@ -196,9 +229,9 @@ h1 {
   display: flex;
   align-items: flex-end;
   border-radius: 10px;
-  /* background-image: url(../public/src/images/covid.jpg); */
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   outline: 1px solid rgba(51, 130, 233, 0.8);
   /* outline: 1px solid rgba(3, 48, 117, 0.8); */
 }

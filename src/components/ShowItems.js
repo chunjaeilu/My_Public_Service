@@ -27,7 +27,7 @@ export default function ShowItems({ showList }) {
                   <tr>
                     <th>신청기간</th>
                     <td>
-                      <p>{item.신청기한 ? item.신청기한 : "없음"}</p>
+                      <p>{item.신청기한 ? item.신청기한 : "상시접수"}</p>
                     </td>
                   </tr>
                   <tr>

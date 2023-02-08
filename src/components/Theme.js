@@ -5,7 +5,7 @@ export default function Theme({ getSearchData }) {
   const imgSrc = [
     "./src/images/covid.jpg",
     "./src/images/disabled.jpg",
-    "./src/images/lowincome.jpg",
+    "./src/images/low_income.jpg",
     "./src/images/small_business.jpg",
     "./src/images/infant.jpg",
     "./src/images/elder.jpg",

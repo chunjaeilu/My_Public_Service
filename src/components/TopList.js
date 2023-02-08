@@ -1,6 +1,8 @@
 // TopList.js
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-export default function TopList({ topList, move2Link }) {
+export default function TopList({ topList }) {
   const description = [
     "코로나19로 입원/격리 통지서를 받은 사람에게 생활지원비 지원",
     "직업훈련을 희망하는 국민에게 직업능력개발 훈련비와 훈련장려금 지원",
@@ -14,23 +16,58 @@ export default function TopList({ topList, move2Link }) {
     "무주택 근로자 및 서민을 위해 임차보증금의 70% 내외, 저렴한 금리로 전세자금 대출 지원",
   ];
 
+  const bgArr = [
+    "./src/images/bg-cash.png",
+    "./src/images/bg-credit.png",
+    "./src/images/bg-account.png",
+    "./src/images/bg-cash.png",
+    "./src/images/bg-insure.png",
+    "./src/images/bg-cash.png",
+    "./src/images/bg-loan.png",
+    "./src/images/bg-edu.png",
+    "./src/images/bg-voucher.png",
+    "./src/images/bg-loan.png",
+  ];
+
   return (
     <div className="top-list-box">
       <h2>자주 찾는 서비스 TOP10</h2>
-      <ul className="top-list">
-        {topList.map((e, i) => (
-          <li key={i}>
-            <div className="list-header">
-              <h4>{e.서비스명}</h4>
-              <p>views : {e.조회수}</p>
-            </div>
-            <h5>{description[i]}</h5>
-            <p>신청기한 : {e.신청기한}</p>
-            <p>소관기관 : {e.소관기관명}</p>
-            <div className="detail-link">자세히 보기</div>
-          </li>
-        ))}
-      </ul>
+      <div className="slide-wrap">
+        <ul className="top-list">
+          {topList.map((e, i) => (
+            <li
+              key={i}
+              style={{
+                backgroundImage: `linear-gradient(
+              120deg,
+              rgba(255, 255, 255, 0.7)80%,
+              rgba(255, 255, 255, 0.5)
+            ),url(${bgArr[i]})`,
+              }}
+            >
+              <div className="list-header">
+                <h4>{e.서비스명}</h4>
+                <p>views : {e.조회수}</p>
+              </div>
+              <h5>{description[i]}</h5>
+              <p>
+                <b>신청기한</b> :{" "}
+                {e.신청기한 !== null ? e.신청기한 : "상시접수"}
+              </p>
+              <p>
+                <b>소관기관</b> : {e.소관기관명}
+              </p>
+              {/* <div className="detail-link">자세히 보기</div> */}
+            </li>
+          ))}
+        </ul>
+        <button className="btn-prev">
+          <FontAwesomeIcon icon={faAngleLeft} />
+        </button>
+        <button className="btn-next">
+          <FontAwesomeIcon icon={faAngleRight} />
+        </button>
+      </div>
     </div>
   );
 }

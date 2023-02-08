@@ -53,6 +53,7 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
   // show리스트
   const [showList, setShowList] = useState([]);
   ...
+  // 조건검색 함수
   const getSearchData = (searchInput, selectedDepart, selectedSubDepart) => {
     // if문에서 출력할 변수 선언
     let selectedList = serviceList;
