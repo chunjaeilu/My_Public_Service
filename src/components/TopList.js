@@ -1,6 +1,6 @@
 // TopList.js
 
-export default function TopList({ topList }) {
+export default function TopList({ topList, move2Link }) {
   const description = [
     "코로나19로 입원/격리 통지서를 받은 사람에게 생활지원비 지원",
     "직업훈련을 희망하는 국민에게 직업능력개발 훈련비와 훈련장려금 지원",

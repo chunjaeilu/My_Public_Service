@@ -9,7 +9,7 @@ export default function Home({ topList, getSearchData }) {
       <Header getSearchData={getSearchData} />
       <main>
         <TopList topList={topList} />
-        <Theme />
+        <Theme getSearchData={getSearchData} />
       </main>
       <Nav />
     </div>

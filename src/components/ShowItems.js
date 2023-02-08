@@ -1,3 +1,5 @@
+// showItems.js
+
 export default function ShowItems({ showList }) {
   return (
     <div className="items">

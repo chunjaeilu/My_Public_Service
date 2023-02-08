@@ -400,8 +400,8 @@ export default function Header({ getSearchData }) {
   // 검색어
   const [searchInput, setSearchInput] = useState("");
 
-  // search버튼 클릭시 라우팅 변환
-  const btnSearch = useNavigate();
+  // nav link
+  const setNav = useNavigate();
 
   // select 1뎁스 onChange
   const onChangeDepart = (e) => {
@@ -426,9 +426,17 @@ export default function Header({ getSearchData }) {
     setSearchInput(inputValue);
   };
 
-  // 링크 이동 함수
-  const navLink = (route) => {
-    btnSearch(route);
+  // input 입력후 엔터키 입력
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      Link2Search("/search");
+      getSearchData(searchInput, selectedDepart, selectedSubDepart);
+    }
+  };
+
+  // nav link 이동 함수
+  const Link2Search = (route) => {
+    setNav(route);
   };
 
   return (
@@ -468,10 +476,12 @@ export default function Header({ getSearchData }) {
             type="text"
             placeholder="찾으시는 서비스를 입력하세요"
             onChange={onChangeInput}
+            onKeyDown={handleKeyDown}
           />
+
           <button
             onClick={() => {
-              navLink("/search");
+              Link2Search("/search");
               getSearchData(searchInput, selectedDepart, selectedSubDepart);
             }}
           ></button>

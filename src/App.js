@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
@@ -37,6 +38,7 @@ function App() {
 
   // 조건검색 함수
   const getSearchData = (searchInput, selectedDepart, selectedSubDepart) => {
+    console.log();
     let selectedList = serviceList;
 
     if (
