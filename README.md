@@ -49,77 +49,77 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
     <summary>펼쳐 보기</summary>
 
     ```javascript
-      // App.js
-      // show리스트
-      const [showList, setShowList] = useState([]);
-      ...
-      const getSearchData = (searchInput, selectedDepart, selectedSubDepart) => {
-        // if문에서 출력할 변수 선언
-        let selectedList = serviceList;
-        if (
-          // 기관/부서선택 [o] & 검색어입력 [o]
-          selectedDepart.depart !== "소관기관" &&
-          selectedSubDepart !== "부서명" &&
-          searchInput.length !== 0
-        ) {
-          selectedList = selectedList.filter(
-            (item) =>
-              item.소관기관명 === selectedDepart.depart &&
-              item.부서명 === selectedSubDepart &&
-              item.서비스명.includes(searchInput)
-          );
-        } else if (
-          // 기관/부서선택 [o] & 검색어입력 [x]
-          selectedDepart.depart !== "소관기관" &&
-          selectedSubDepart !== "부서명" &&
-          searchInput.length === 0
-        ) {
-          selectedList = selectedList.filter(
-            (item) =>
-              item.소관기관명 === selectedDepart.depart &&
-              item.부서명 === selectedSubDepart
-          );
-        } else if (
-          // 기관[o] & 부서 [x] & 검색어입력 [x]
-          selectedDepart.depart !== "소관기관" &&
-          selectedSubDepart === "부서명" &&
-          searchInput.length === 0
-        ) {
-          selectedList = selectedList.filter(
-            (item) => item.소관기관명 === selectedDepart.depart
-          );
-        } else if (
-          // 기관[o] & 부서 [x] & 검색어입력 [o]
-          selectedDepart.depart !== "소관기관" &&
-          selectedSubDepart === "부서명" &&
-          searchInput.length !== 0
-        ) {
-          selectedList = selectedList.filter(
-            (item) =>
-              item.소관기관명 === selectedDepart.depart &&
-              item.서비스명.includes(searchInput)
-          );
-        } else if (
-          // 기관[x] & 부서 [x] & 검색어입력 [o]
-          selectedDepart.depart === "소관기관" &&
-          selectedSubDepart === "부서명" &&
-          searchInput.length !== 0
-        ) {
-          selectedList = selectedList.filter((item) =>
+    // App.js
+    // show리스트
+    const [showList, setShowList] = useState([]);
+    ...
+    const getSearchData = (searchInput, selectedDepart, selectedSubDepart) => {
+      // if문에서 출력할 변수 선언
+      let selectedList = serviceList;
+      if (
+        // 기관/부서선택 [o] & 검색어입력 [o]
+        selectedDepart.depart !== "소관기관" &&
+        selectedSubDepart !== "부서명" &&
+        searchInput.length !== 0
+      ) {
+        selectedList = selectedList.filter(
+          (item) =>
+            item.소관기관명 === selectedDepart.depart &&
+            item.부서명 === selectedSubDepart &&
             item.서비스명.includes(searchInput)
-          );
-        } else if (
-          // 기관[x] & 부서 [x] & 검색어입력 [x]
-          selectedDepart.depart === "소관기관" &&
-          selectedSubDepart === "부서명" &&
-          searchInput.length === 0
-        ) {
-        }
-        setShowList([...selectedList]);
-      };
+        );
+      } else if (
+        // 기관/부서선택 [o] & 검색어입력 [x]
+        selectedDepart.depart !== "소관기관" &&
+        selectedSubDepart !== "부서명" &&
+        searchInput.length === 0
+      ) {
+        selectedList = selectedList.filter(
+          (item) =>
+            item.소관기관명 === selectedDepart.depart &&
+            item.부서명 === selectedSubDepart
+        );
+      } else if (
+        // 기관[o] & 부서 [x] & 검색어입력 [x]
+        selectedDepart.depart !== "소관기관" &&
+        selectedSubDepart === "부서명" &&
+        searchInput.length === 0
+      ) {
+        selectedList = selectedList.filter(
+          (item) => item.소관기관명 === selectedDepart.depart
+        );
+      } else if (
+        // 기관[o] & 부서 [x] & 검색어입력 [o]
+        selectedDepart.depart !== "소관기관" &&
+        selectedSubDepart === "부서명" &&
+        searchInput.length !== 0
+      ) {
+        selectedList = selectedList.filter(
+          (item) =>
+            item.소관기관명 === selectedDepart.depart &&
+            item.서비스명.includes(searchInput)
+        );
+      } else if (
+        // 기관[x] & 부서 [x] & 검색어입력 [o]
+        selectedDepart.depart === "소관기관" &&
+        selectedSubDepart === "부서명" &&
+        searchInput.length !== 0
+      ) {
+        selectedList = selectedList.filter((item) =>
+          item.서비스명.includes(searchInput)
+        );
+      } else if (
+        // 기관[x] & 부서 [x] & 검색어입력 [x]
+        selectedDepart.depart === "소관기관" &&
+        selectedSubDepart === "부서명" &&
+        searchInput.length === 0
+      ) {
+      }
+      setShowList([...selectedList]);
+    };
     ```
   </details>
-  
+
 ## ISSUES
 
 ### 반복 처리하는 `fetch`안에서 `useState()`로 관리하는 변수, 누적되지 않고 초기화 되는 이슈
