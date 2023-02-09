@@ -70,6 +70,8 @@ h1 {
   background: #fff;
   padding: 10px;
   font-family: "Noto sans KR", sans-serif;
+  color: #333;
+  font-size: 14px;
 }
 
 .input-box .select-box select:first-child {
@@ -245,7 +247,7 @@ h1 {
   /* background: rgba(3, 48, 117, 0.8); */
   color: #fff;
   text-align: center;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 9px 9px;
   padding: 2px;
 }
 
