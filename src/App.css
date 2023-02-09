@@ -119,7 +119,7 @@ h1 {
   display: flex;
   width: calc(1000% + 200px);
   gap: 20px;
-  transform: translateX(calc(0 * (-100vw + 20px)));
+  transform: translateX(calc(6 * (-100vw + 20px)));
   transition: 0.5s;
 }
 
@@ -223,7 +223,6 @@ h1 {
   height: 10vh;
   min-height: 100px;
   border-radius: 10px;
-  outline: 1px solid rgba(51, 130, 233, 0.8);
 }
 
 .theme-box .theme-list .theme {
@@ -234,7 +233,8 @@ h1 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
+  border-radius: 10px;
+  outline: 1px solid rgba(51, 130, 233, 0.8);
   /* outline: 1px solid rgba(3, 48, 117, 0.8); */
 }
 
