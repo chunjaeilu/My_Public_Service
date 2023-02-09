@@ -67,6 +67,7 @@ h1 {
   width: 50%;
   height: 50px;
   border: none;
+  background: #fff;
   padding: 10px;
   font-family: "Noto sans KR", sans-serif;
 }
@@ -221,6 +222,7 @@ h1 {
   min-width: 130px;
   height: 10vh;
   min-height: 100px;
+  border-radius: 10px;
 }
 
 .theme-box .theme-list .theme {

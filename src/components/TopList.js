@@ -39,8 +39,8 @@ export default function TopList({ topList }) {
               key={i}
               style={{
                 backgroundImage: `linear-gradient(
-              120deg,
-              rgba(255, 255, 255, 0.7)80%,
+              to right,
+              rgba(255, 255, 255, 0.5),
               rgba(255, 255, 255, 0.5)
             ),url(${bgArr[i]})`,
               }}
