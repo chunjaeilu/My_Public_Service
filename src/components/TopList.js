@@ -1,10 +1,13 @@
 // TopList.js
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+
+// slider 라이브러리
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function TopList({ topList }) {
   const description = [
-    "코로나19로 입원/격리 통지서를 받은 사람에게 생활지원비 지원",
+    "코로나19로 입원/격리 통지서를 받은 사람에게 생활비 지원",
     "직업훈련을 희망하는 국민에게 직업능력개발 훈련비와 훈련장려금 지원",
     "저소득 무주택 청년 대상으로 청약통장에 우대금리 및 비과세 혜택 제공",
     "주소득자의 사망, 가출, 행방불명 등 생계유지가 곤란한 가구에 현금 지원",
@@ -29,22 +32,26 @@ export default function TopList({ topList }) {
     "./src/images/bg-loan.png",
   ];
 
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <div className="top-list-box">
       <h2>자주 찾는 서비스 TOP10</h2>
-      <div className="slide-wrap">
-        <ul className="top-list">
-          {topList.map((e, i) => (
-            <li
-              key={i}
-              style={{
-                backgroundImage: `linear-gradient(
-              to right,
-              rgba(255, 255, 255, 0.5),
-              rgba(255, 255, 255, 0.5)
-            ),url(${bgArr[i]})`,
-              }}
-            >
+      <Slider {...settings}>
+        {topList.map((e, i) => (
+          <div key={i} className="slider-item">
+            <div className="bg-box">
+              <img src={bgArr[i]} alt="bg" />
+              <div className="bg-filter"></div>
+            </div>
+
+            <div className="text-info">
               <div className="list-header">
                 <h4>{e.서비스명}</h4>
                 <p>views : {e.조회수}</p>
@@ -57,17 +64,10 @@ export default function TopList({ topList }) {
               <p>
                 <b>소관기관</b> : {e.소관기관명}
               </p>
-              {/* <div className="detail-link">자세히 보기</div> */}
-            </li>
-          ))}
-        </ul>
-        <button className="btn-prev">
-          <FontAwesomeIcon icon={faAngleLeft} />
-        </button>
-        <button className="btn-next">
-          <FontAwesomeIcon icon={faAngleRight} />
-        </button>
-      </div>
+            </div>
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 }

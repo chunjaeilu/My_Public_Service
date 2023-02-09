@@ -467,7 +467,7 @@ export default function Header({ getSearchData }) {
                 </option>
               ))}
             </select>
-            <div class="icon-down">
+            <div className="icon-down">
               <FontAwesomeIcon icon={faAngleDown} />
             </div>
           </div>
@@ -484,7 +484,7 @@ export default function Header({ getSearchData }) {
                 </option>
               ))}
             </select>
-            <div class="icon-down">
+            <div className="icon-down">
               <FontAwesomeIcon icon={faAngleDown} />
             </div>
           </div>
