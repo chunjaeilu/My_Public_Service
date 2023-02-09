@@ -223,6 +223,7 @@ h1 {
   height: 10vh;
   min-height: 100px;
   border-radius: 10px;
+  outline: 1px solid rgba(51, 130, 233, 0.8);
 }
 
 .theme-box .theme-list .theme {
@@ -230,11 +231,10 @@ h1 {
   height: 100%;
   display: flex;
   align-items: flex-end;
-  border-radius: 10px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  outline: 1px solid rgba(51, 130, 233, 0.8);
+
   /* outline: 1px solid rgba(3, 48, 117, 0.8); */
 }
 
