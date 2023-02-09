@@ -1,6 +1,8 @@
 // Header.js
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const departmentArr = [
   { depart: "전체기관", sub: ["전체부서"] },
@@ -452,30 +454,40 @@ export default function Header({ getSearchData }) {
       </header>
       <div className="input-box">
         <div className="select-box">
-          <select
-            name="department"
-            id="department"
-            onChange={onChangeDepart}
-            value={selectedDepart.depart}
-          >
-            {departmentArr.map((depart, i) => (
-              <option value={depart.depart} key={i}>
-                {depart.depart}
-              </option>
-            ))}
-          </select>
-          <select
-            name="sub-depart"
-            id="sub-depart"
-            value={selectedSubDepart}
-            onChange={onChangeSubDepart}
-          >
-            {selectedDepart.sub.map((sub, i) => (
-              <option key={i} value={sub}>
-                {sub}
-              </option>
-            ))}
-          </select>
+          <div className="select-box-depth2">
+            <select
+              name="department"
+              id="department"
+              onChange={onChangeDepart}
+              value={selectedDepart.depart}
+            >
+              {departmentArr.map((depart, i) => (
+                <option value={depart.depart} key={i}>
+                  {depart.depart}
+                </option>
+              ))}
+            </select>
+            <div class="icon-down">
+              <FontAwesomeIcon icon={faAngleDown} />
+            </div>
+          </div>
+          <div className="select-box-depth2">
+            <select
+              name="sub-depart"
+              id="sub-depart"
+              value={selectedSubDepart}
+              onChange={onChangeSubDepart}
+            >
+              {selectedDepart.sub.map((sub, i) => (
+                <option key={i} value={sub}>
+                  {sub}
+                </option>
+              ))}
+            </select>
+            <div class="icon-down">
+              <FontAwesomeIcon icon={faAngleDown} />
+            </div>
+          </div>
         </div>
         <div className="search-box">
           <input
