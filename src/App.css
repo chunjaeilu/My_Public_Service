@@ -234,7 +234,7 @@ h1 {
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 10px;
-  outline: 1px solid rgba(51, 130, 233, 0.8);
+  border: 1px solid rgba(51, 130, 233, 0.8);
   /* outline: 1px solid rgba(3, 48, 117, 0.8); */
 }
 
