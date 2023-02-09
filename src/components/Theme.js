@@ -6,7 +6,7 @@ export default function Theme({ getSearchData }) {
     { theme: "코로나", searchWord: "코로나", imgSrc: "./src/images/covid.jpg" },
     {
       theme: "장애인",
-      searchWord: "코로나",
+      searchWord: "장애인",
       imgSrc: "./src/images/disabled.jpg",
     },
     {
@@ -37,7 +37,7 @@ export default function Theme({ getSearchData }) {
             <div
               className="theme"
               onClick={() => {
-                getSearchData(e.searchWord, { depart: "소관기관" }, "부서명");
+                getSearchData(e.searchWord, { depart: "전체기관" }, "전체부서");
               }}
               style={{ backgroundImage: `url(${e.imgSrc})` }}
             >

@@ -63,10 +63,21 @@ h1 {
   border-bottom: 0.5px solid #666;
 }
 
+/* IE 기본arrow 제거 */
+.input-box .select-box select::-ms-expand {
+  display: none;
+}
+
 .input-box .select-box select {
+  /* 기본arrow 제거 */
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
   width: 50%;
   height: 50px;
-  border: none;
+  border: 0 none;
   background: #fff;
   padding: 10px;
   font-family: "Noto sans KR", sans-serif;
@@ -121,7 +132,7 @@ h1 {
   display: flex;
   width: calc(1000% + 200px);
   gap: 20px;
-  transform: translateX(calc(6 * (-100vw + 20px)));
+  transform: translateX(calc(0 * (-100vw + 20px)));
   transition: 0.5s;
 }
 

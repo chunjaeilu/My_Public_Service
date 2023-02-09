@@ -42,8 +42,8 @@ function App() {
 
     if (
       // 기관/부서선택 [o] & 검색어입력 [o]
-      selectedDepart.depart !== "소관기관" &&
-      selectedSubDepart !== "부서명" &&
+      selectedDepart.depart !== "전체기관" &&
+      selectedSubDepart !== "전체부서" &&
       searchInput.length !== 0
     ) {
       selectedList = selectedList.filter(
@@ -54,8 +54,8 @@ function App() {
       );
     } else if (
       // 기관/부서선택 [o] & 검색어입력 [x]
-      selectedDepart.depart !== "소관기관" &&
-      selectedSubDepart !== "부서명" &&
+      selectedDepart.depart !== "전체기관" &&
+      selectedSubDepart !== "전체부서" &&
       searchInput.length === 0
     ) {
       selectedList = selectedList.filter(
@@ -65,8 +65,8 @@ function App() {
       );
     } else if (
       // 기관[o] & 부서 [x] & 검색어입력 [x]
-      selectedDepart.depart !== "소관기관" &&
-      selectedSubDepart === "부서명" &&
+      selectedDepart.depart !== "전체기관" &&
+      selectedSubDepart === "전체부서" &&
       searchInput.length === 0
     ) {
       selectedList = selectedList.filter(
@@ -74,8 +74,8 @@ function App() {
       );
     } else if (
       // 기관[o] & 부서 [x] & 검색어입력 [o]
-      selectedDepart.depart !== "소관기관" &&
-      selectedSubDepart === "부서명" &&
+      selectedDepart.depart !== "전체기관" &&
+      selectedSubDepart === "전체부서" &&
       searchInput.length !== 0
     ) {
       selectedList = selectedList.filter(
@@ -85,8 +85,8 @@ function App() {
       );
     } else if (
       // 기관[x] & 부서 [x] & 검색어입력 [o]
-      selectedDepart.depart === "소관기관" &&
-      selectedSubDepart === "부서명" &&
+      selectedDepart.depart === "전체기관" &&
+      selectedSubDepart === "전체부서" &&
       searchInput.length !== 0
     ) {
       selectedList = selectedList.filter((item) =>
@@ -94,8 +94,8 @@ function App() {
       );
     } else if (
       // 기관[x] & 부서 [x] & 검색어입력 [x]
-      selectedDepart.depart === "소관기관" &&
-      selectedSubDepart === "부서명" &&
+      selectedDepart.depart === "전체기관" &&
+      selectedSubDepart === "전체부서" &&
       searchInput.length === 0
     ) {
     }
