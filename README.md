@@ -196,6 +196,7 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
 ### 23.02.09(목)
 - TOP LIST UI 수정
 - slick 라이브러리 적용
+- 모바일환경에서 UI 다르게 구현되는 부분 수정
 
 ### 23.02.10(금)
 - `/detail` 페이지 구현 및 기능 구현
