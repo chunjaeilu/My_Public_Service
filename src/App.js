@@ -23,6 +23,9 @@ function App() {
   // topList
   const [topList, setTopList] = useState([]);
 
+  // Choosed Item
+  const [choosedItem, setChoosedItem] = useState([]);
+
   // 서비스목록 불러오기
   const getServiceListData = async () => {
     const response = await axios.get(API_URL);
@@ -34,6 +37,21 @@ function App() {
     setServiceList([...data]);
     const top10List = data.slice(0, 10);
     setTopList([...top10List]);
+  };
+
+  // 디테일데이터 불러오기
+  const getDetailData = async (serviceID) => {
+    for (let i = 1; i <= 10; i++) {
+      let API_URL2 = `${URL}${api_list[1]}?&page=${i}&perPage=1000&serviceKey=${API_KEY}`;
+      const response = await axios.get(API_URL2);
+      // console.log(response.data.data);
+      let choosed = response.data.data.filter((e) => e.SVC_ID === serviceID);
+
+      setChoosedItem([...choosed]);
+      if (choosed.length >= 1) {
+        break;
+      }
+    }
   };
 
   // 조건검색 함수
@@ -101,7 +119,6 @@ function App() {
     }
     setShowList([...selectedList]);
   };
-
   // 마운트시 api 호출
   useEffect(() => {
     getServiceListData();
@@ -112,7 +129,13 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home topList={topList} getSearchData={getSearchData} />}
+          element={
+            <Home
+              topList={topList}
+              getSearchData={getSearchData}
+              getDetailData={getDetailData}
+            />
+          }
         />
         <Route
           path="/search"
@@ -121,10 +144,16 @@ function App() {
               serviceList={serviceList}
               showList={showList}
               getSearchData={getSearchData}
+              getDetailData={getDetailData}
             />
           }
         />
-        <Route path="/detail" element={<Detail />} />
+        <Route
+          path="/detail"
+          element={
+            <Detail getSearchData={getSearchData} choosedItem={choosedItem} />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

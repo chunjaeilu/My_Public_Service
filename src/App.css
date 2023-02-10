@@ -362,3 +362,27 @@ nav .home-box {
   position: relative;
   bottom: 15px;
 }
+
+.choosed-item {
+  background: #fff;
+  padding: 0 10px;
+}
+
+.choosed-item h3 {
+  padding: 20px 0;
+}
+
+.choosed-item p {
+  font-size: 14px;
+}
+
+.choosed-item .detail-info-box {
+  background: #f5f7fa;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.choosed-item .detail-info-box:last-child {
+  margin-bottom: 80px;
+}

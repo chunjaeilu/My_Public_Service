@@ -4,8 +4,9 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
-export default function TopList({ topList }) {
+export default function TopList({ topList, getDetailData }) {
   const description = [
     "코로나19로 입원/격리 통지서를 받은 사람에게 생활비 지원",
     "직업훈련을 희망하는 국민에게 직업능력개발 훈련비와 훈련장려금 지원",
@@ -45,27 +46,31 @@ export default function TopList({ topList }) {
       <h2>자주 찾는 서비스 TOP10</h2>
       <Slider {...settings}>
         {topList.map((e, i) => (
-          <div key={i} className="slider-item">
-            <div className="bg-box">
-              <img src={bgArr[i]} alt="bg" />
-              <div className="bg-filter"></div>
-            </div>
-
-            <div className="text-info">
-              <div className="list-header">
-                <h4>{e.서비스명}</h4>
-                <p>views : {e.조회수}</p>
+          <Link to="/detail" key={i}>
+            <div
+              className="slider-item"
+              onClick={() => getDetailData(e.서비스ID)}
+            >
+              <div className="bg-box">
+                <img src={bgArr[i]} alt="bg" />
+                <div className="bg-filter"></div>
               </div>
-              <h5>{description[i]}</h5>
-              <p>
-                <b>신청기한</b> :{" "}
-                {e.신청기한 !== null ? e.신청기한 : "상시접수"}
-              </p>
-              <p>
-                <b>소관기관</b> : {e.소관기관명}
-              </p>
+
+              <div className="text-info">
+                <div className="list-header">
+                  <h4>{e.서비스명}</h4>
+                  <p>views : {e.조회수}</p>
+                </div>
+                <h5>{description[i]}</h5>
+                <p>
+                  <b>신청기한</b> : {e.신청기한 !== null ? e.신청기한 : "없음"}
+                </p>
+                <p>
+                  <b>소관기관</b> : {e.소관기관명}
+                </p>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </Slider>
     </div>
