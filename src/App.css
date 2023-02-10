@@ -372,17 +372,41 @@ nav .home-box {
   padding: 20px 0;
 }
 
-.choosed-item p {
-  font-size: 14px;
-}
-
 .choosed-item .detail-info-box {
   background: #f5f7fa;
   border-radius: 5px;
   margin-bottom: 10px;
   padding: 10px;
+  position: relative;
 }
 
 .choosed-item .detail-info-box:last-child {
   margin-bottom: 80px;
+}
+
+.choosed-item .detail-info-box h4 {
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+.choosed-item .detail-info-box p {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.choosed-item .detail-info-box p.fs-15 {
+  font-size: 15px;
+  color: #333;
+}
+
+.choosed-item .detail-info-box .ex-link {
+  font-size: 15px;
+  color: #666;
+  border: 1px solid #666;
+  padding: 3px 5px;
+  border-radius: 3px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
