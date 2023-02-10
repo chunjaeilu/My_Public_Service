@@ -45,8 +45,8 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
 > 검색 조건에 따른 결과 추출 로직 작성
 >
 > 검색결과를 `showList` 변수에 저장
-<details>
-  <summary>펼쳐 보기</summary>
+>
+> `showList`를 `/search` 페이지에 출력
 
   ```javascript
   // App.js
@@ -119,7 +119,47 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
     setShowList([...selectedList]);
   };
   ```
-</details>
+
+#### 테마별 검색기능 
+- 테마 키워드 를 매개변수로 검색함수`getSearchData()` 실행
+- 소관기관 / 부서명은 default값 ("모든기관"/"모든부서")로 전달
+
+### 서비스 선택시 detail 페이지 전환 및 detail 정보 fetch
+> 메인페이지 및 검색결과 페이지에서 특정 서비스 선택시 페이지 이동 및 해당 서비스 상세정보 노출
+  ```javascript
+  <Link to="/detail" key={i}>
+    {/* "/detail" 링크 이동 */}
+    <div
+      className="item"
+      onClick={() => {
+        getDetailData(item.서비스ID);
+        // getDetailData() 함수 호출
+      }}
+    >
+      ...
+    </div>
+  </Link>
+  ```
+> 선택한 서비스의 코드번호 참조하여 `getDetailData()`함수 호출
+>
+> `getDetailData` 함수에서 상세정보를 제공하는 API `fetch`
+>
+  ```javascript
+  const api_list = ["serviceList", "serviceDetail", "supportConditions"];
+  const getDetailData = async (serviceID) => {
+    for (let i = 1; i <= 10; i++) {
+      let API_URL2 = `${URL}${api_list[1]}?&page=${i}&perPage=1000&serviceKey=${API_KEY}`;
+      const response = await axios.get(API_URL2);
+      // console.log(response.data.data);
+      let choosed = response.data.data.filter((e) => e.SVC_ID === serviceID);
+
+      setChoosedItem([...choosed]);
+      if (choosed.length >= 1) {
+        break;
+      }
+    }
+  };
+  ```
 
 ## ISSUES
 
@@ -148,3 +188,14 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
 ### 23.02.07(화)
 - 앱 구현 및 보고서 작성
 - 1차 제출
+
+### 23.02.08(수)
+- 테마 컴포넌트 UI 수정
+- 페이지 이동방식 수정 (useNavigate >> Link)
+
+### 23.02.09(목)
+- TOP LIST UI 수정
+- slick 라이브러리 적용
+
+### 23.02.10(금)
+- `/detail` 페이지 구현 및 기능 구현
