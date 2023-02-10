@@ -7,10 +7,12 @@ export default function ShowItems({ showList, getDetailData }) {
       {showList.map((item, i) => {
         return (
           <Link to="/detail" key={i}>
+            {/* "/detail" 링크 이동 */}
             <div
               className="item"
               onClick={() => {
                 getDetailData(item.서비스ID);
+                // getDetailData() 함수 호출
               }}
             >
               <h3>{item.서비스명}</h3>
