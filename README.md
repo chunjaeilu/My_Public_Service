@@ -180,13 +180,13 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
 
 ### 23.02.03(금)
 - 컨셉 및 시안 제작
-- 앱 구현 작업(React)
+- 앱 구현 작업(data 호출)
 
 ### 23.02.06(월)
-- 앱 구현 작업
+- 앱 구현 작업 (data 호출 및 검색기능)
 
 ### 23.02.07(화)
-- 앱 구현 및 보고서 작성
+- 검색기능 구현 및 보고서 작성
 - 1차 제출
 
 ### 23.02.08(수)
@@ -200,3 +200,4 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
 
 ### 23.02.10(금)
 - `/detail` 페이지 구현 및 기능 구현
+- 업데이트 기능명세서 작성 및 제출
