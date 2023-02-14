@@ -13,7 +13,7 @@ function App() {
   const URL = "https://api.odcloud.kr/api/gov24/v1/";
   const api_list = ["serviceList", "serviceDetail", "supportConditions"];
   let API_URL = `${URL}${api_list[0]}?&page=1&perPage=1000&serviceKey=${API_KEY}`;
-
+  const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   // 서비스리스트
   const [serviceList, setServiceList] = useState([]);
 
@@ -28,16 +28,37 @@ function App() {
 
   // 서비스목록 불러오기
   const getServiceListData = async () => {
-    const response = await axios.get(API_URL);
-    // console.log(response.data.data);
-    let data = response.data.data;
-
+    const response = await axios.all([
+      ...pages.map((page) =>
+        axios.get(
+          `${URL}${api_list[0]}?&page=${page}&perPage=1000&serviceKey=${API_KEY}`
+        )
+      ),
+    ]);
+    let dataArr = [];
+    // console.log(response);
+    response.map((res) => (dataArr = dataArr.concat(res.data.data)));
+    // console.log(dataArr);
     // showList 가공
-    data.sort((a, b) => b.조회수 - a.조회수);
-    setServiceList([...data]);
-    const top10List = data.slice(0, 10);
+    dataArr.sort((a, b) => b.조회수 - a.조회수);
+    setServiceList([...dataArr]);
+    const top10List = dataArr.slice(0, 10);
     setTopList([...top10List]);
+    console.log(topList);
   };
+
+  // 서비스목록 불러오기
+  // const getServiceListData = async () => {
+  //   const response = await axios.get(API_URL);
+  // console.log(response.data.data);
+  // let data = response.data.data;
+
+  // showList 가공
+  //   data.sort((a, b) => b.조회수 - a.조회수);
+  //   setServiceList([...data]);
+  //   const top10List = data.slice(0, 10);
+  //   setTopList([...top10List]);
+  // };
 
   // 디테일데이터 불러오기
   const getDetailData = async (serviceID) => {

@@ -11,6 +11,7 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
 > 사용자 위주의 간결하고 깔끔한 UI/UX
 
 ## Skills & Tools
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"><img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"><img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"><img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"> <br> <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white"><img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"><img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=Expo&logoColor=white">
 
 ## 주요 구현 기능
 ### API 호출
@@ -29,12 +30,19 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
     ...
     // 서비스목록 불러오기
     const getServiceListData = async () => {
-      const response = await axios.get(API_URL);
-      let data = response.data.data;
-      
+      const response = await axios.all([
+        ...pages.map((page) =>
+          axios.get(
+            `${URL}${api_list[0]}?&page=${page}&perPage=1000&serviceKey=${API_KEY}`
+          )
+        ),
+      ]);
+      let dataArr = [];
+      response.map((res) => (dataArr = dataArr.concat(res.data.data)));
+
       // 조회수 순 정렬
-      data.sort((a, b) => b.조회수 - a.조회수);
-      setServiceList([...data]);
+      dataArr.sort((a, b) => b.조회수 - a.조회수);
+      setServiceList([...dataArr]);
     };
     ...
   }
@@ -142,7 +150,7 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
   ```
 > 선택한 서비스의 코드번호 참조하여 `getDetailData()`함수 호출
 >
-> `getDetailData` 함수에서 상세정보를 제공하는 API `fetch`
+> `getDetailData` 함수에서 상세정보를 제공하는 API `axios`
 >
   ```javascript
   const api_list = ["serviceList", "serviceDetail", "supportConditions"];
