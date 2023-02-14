@@ -1,7 +1,7 @@
 // Choosed.js
 
 export default function Choosed({ choosedItem }) {
-  // console.log(choosedItem);
+  console.log(choosedItem);
 
   return (
     <>

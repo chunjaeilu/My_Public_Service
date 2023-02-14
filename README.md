@@ -132,7 +132,7 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
 - 테마 키워드 를 매개변수로 검색함수`getSearchData()` 실행
 - 소관기관 / 부서명은 default값 ("모든기관"/"모든부서")로 전달
 
-### 서비스 선택시 detail 페이지 전환 및 detail 정보 fetch
+### 서비스 선택시 detail 페이지 전환 및 detail 정보 API 호출
 > 메인페이지 및 검색결과 페이지에서 특정 서비스 선택시 페이지 이동 및 해당 서비스 상세정보 노출
   ```javascript
   <Link to="/detail" key={i}>
@@ -150,8 +150,8 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
   ```
 > 선택한 서비스의 코드번호 참조하여 `getDetailData()`함수 호출
 >
-> `getDetailData` 함수에서 상세정보를 제공하는 API `axios`
->
+> `getDetailData` 함수에서 상세정보를 제공하는 API 호출(`axios`)
+
   ```javascript
   const api_list = ["serviceList", "serviceDetail", "supportConditions"];
   const getDetailData = async (serviceID) => {
@@ -172,14 +172,54 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
 ## ISSUES
 
 ### 반복 처리하는 `fetch`안에서 `useState()`로 관리하는 변수, 누적되지 않고 초기화 되는 이슈
-> DB가 여러 page로 나뉘어져 있고, 모든 데이터를 한번에 `fetch`하지 못해, 반복문으로 처리하려 하였으나
+> DB가 여러 page로 나뉘어져 있고, 모든 데이터를 한번에 `fetch`하지 못해 반복문으로 처리하려 하였으나
 >
-> `useState()`는 컴포넌트가 렌더링 될때마다 값을 초기화 하므로 반복문으로 `fetch`를 여러번 하는 것은 불가능하다는 결론
+> `useState()`는 컴포넌트가 렌더링 될때마다 값을 초기화 하므로 반복문 안에서 `useState`를 여러번 사용할 수 없음
 >
-> 총 9919개의 데이터 중 한번에 불러올 수 있는 1000개의 데이터만 가지고 작성
+> 이번 프로젝트에서는 `fetch` 대신 `axios`를 사용했으므로 `axios.all` 메서드를 이용해 multiple request 처리
 >
-> 추후 모든 데이터 불러올 수 있는 방법 학습 필요
-
+> 모든 데이터를 불러온 뒤 하나의 배열로 만들고 `useState`는 반복문에 포함시키는 것이 아니라 모든 작업이 완료된 뒤 한 번만 실행
+  ```javascript
+  const getServiceListData = async () => {
+    // axios.all : 여러 요청(multiple request)를 실행하는 메서드
+    // 프로미스 배열을 인수로 받아 배열 내의 모든 프로미스가 완료되었을 때 새로운 리퀘스트를 반환한다
+    const response = await axios.all([
+      ...pages.map((page) =>
+        axios.get(
+          `${URL}${api_list[0]}?&page=${page}&perPage=1000&serviceKey=${API_KEY}`
+        )
+      ),
+    ]);
+    let dataArr = [];
+    // response로 받은 모든 배열을 dataArr에 하나의 배열로 합침
+    response.map((res) => (dataArr = dataArr.concat(res.data.data)));
+    ...
+    // useState는 한 번만 실행
+    setServiceList([...dataArr]);
+    ...
+  };
+  ```
+- `fetch`로 데이터 요청을 처리할 때도 비슷한 방법으로 처리할 수 있다.
+  ```javascript
+  const getData = async () => {
+    setLoading(true);
+    await Promise.all([
+      ...pages.map((page) => {
+        return fetch(
+          `${URL}${api_list[0]}?&page=${page}&perPage=1000&serviceKey=${API_KEY}`
+        ).then((res) => res.json());
+      })
+    ]).then((allData) => {
+      let copy = allData.map((data, i) => {
+        return data.data;
+      });
+      // 2차원 배열 1차원 배열로 합치기
+      copy = copy.flat();
+      setList(copy);
+      setLoading(false);
+    });
+  };
+  ```
 ## Timetable
 
 ### 23.02.02(목)

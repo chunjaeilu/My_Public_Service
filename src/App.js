@@ -6,28 +6,29 @@ import "./App.css";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Detail from "./pages/Detail";
+import Loading from "./components/Loading";
 
 function App() {
   const API_KEY =
     "2rRLJsTlQ8FptpGLqMHFM0BXJA5f4jBxNUlKeLQRYwOI4QpobCOT2pVOw9ddrq273ybB5XcgQjf4J8GGVAhfrg==";
   const URL = "https://api.odcloud.kr/api/gov24/v1/";
   const api_list = ["serviceList", "serviceDetail", "supportConditions"];
-  let API_URL = `${URL}${api_list[0]}?&page=1&perPage=1000&serviceKey=${API_KEY}`;
+  // let API_URL = `${URL}${api_list[0]}?&page=1&perPage=1000&serviceKey=${API_KEY}`;
   const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   // 서비스리스트
   const [serviceList, setServiceList] = useState([]);
-
   // show리스트
   const [showList, setShowList] = useState([]);
-
   // topList
   const [topList, setTopList] = useState([]);
-
   // Choosed Item
   const [choosedItem, setChoosedItem] = useState([]);
+  // Loading
+  const [loading, setLoading] = useState(null);
 
   // 서비스목록 불러오기
   const getServiceListData = async () => {
+    setLoading(true);
     const response = await axios.all([
       ...pages.map((page) =>
         axios.get(
@@ -36,7 +37,7 @@ function App() {
       ),
     ]);
     let dataArr = [];
-    // console.log(response);
+
     response.map((res) => (dataArr = dataArr.concat(res.data.data)));
     // console.log(dataArr);
     // showList 가공
@@ -44,21 +45,9 @@ function App() {
     setServiceList([...dataArr]);
     const top10List = dataArr.slice(0, 10);
     setTopList([...top10List]);
-    console.log(topList);
+    setLoading(false);
   };
-
-  // 서비스목록 불러오기
-  // const getServiceListData = async () => {
-  //   const response = await axios.get(API_URL);
-  // console.log(response.data.data);
-  // let data = response.data.data;
-
-  // showList 가공
-  //   data.sort((a, b) => b.조회수 - a.조회수);
-  //   setServiceList([...data]);
-  //   const top10List = data.slice(0, 10);
-  //   setTopList([...top10List]);
-  // };
+  // console.log(topList);
 
   // 디테일데이터 불러오기
   const getDetailData = async (serviceID) => {
@@ -67,7 +56,7 @@ function App() {
       const response = await axios.get(API_URL2);
       // console.log(response.data.data);
       let choosed = response.data.data.filter((e) => e.SVC_ID === serviceID);
-
+      // console.log(choosed);
       setChoosedItem([...choosed]);
       if (choosed.length >= 1) {
         break;

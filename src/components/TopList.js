@@ -10,27 +10,27 @@ export default function TopList({ topList, getDetailData }) {
   const description = [
     "코로나19로 입원/격리 통지서를 받은 사람에게 생활비 지원",
     "직업훈련을 희망하는 국민에게 직업능력개발 훈련비와 훈련장려금 지원",
+    "호당 2.5억 원 한도, 연 2.15% ~ 3.00%(소득과 만기에 따라 차등) 금리",
+    "무주택세대구성원 등에게 시세보다 저렴한 임대보증금의 장기전세주택 공급",
     "저소득 무주택 청년 대상으로 청약통장에 우대금리 및 비과세 혜택 제공",
+    "국민을 대상으로 재무, 건강 등 종합적인 노후준비 진단 서비스 제공",
+    "청약가입후 2년이상 장기 재직하는 청년근로자에게 만기공제금 1,200만원 지원",
     "주소득자의 사망, 가출, 행방불명 등 생계유지가 곤란한 가구에 현금 지원",
-    "기초생활구습자 및 차상위계층 대상으로 공익형 상해보험 가입비 지원",
-    "소득과 재산이 적은 근로소득자에게 근로장려금을, 자녀가 있을 경우 자녀장려금을 지급",
-    "생애최초, 5년이상 무주택세대주에게 수익공유형, 손익공유형에 따라 차등지원",
-    "구직자에게 채용지원 및 직업진로지도 서비스 제공",
-    "취약계층 대상으로 산림복지서비스 이용권 지급(1인당 연 10만원)",
-    "무주택 근로자 및 서민을 위해 임차보증금의 70% 내외, 저렴한 금리로 전세자금 대출 지원",
+    "기후위기에 취약한 에너지이용 소외계층에게 단열·창호·바닥공사 및 고효율 보일러 보급 지원",
+    "기초생활수급자 및 차상위계층 대상으로 공익형 상해보험 가입비 지원",
   ];
 
   const bgArr = [
     "./src/images/bg-cash.png",
     "./src/images/bg-credit.png",
     "./src/images/bg-account.png",
+    "./src/images/bg-housing.png",
+    "./src/images/bg-account.png",
+    "./src/images/bg-retire.png",
+    "./src/images/bg-account.png",
     "./src/images/bg-cash.png",
+    "./src/images/bg-housing.png",
     "./src/images/bg-insure.png",
-    "./src/images/bg-cash.png",
-    "./src/images/bg-loan.png",
-    "./src/images/bg-edu.png",
-    "./src/images/bg-voucher.png",
-    "./src/images/bg-loan.png",
   ];
 
   const settings = {
