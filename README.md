@@ -30,7 +30,7 @@
   ```
   
 ## Run
-  ```cmd
+  ```
   $ npm start
   ```
 - http://localhost:3000
