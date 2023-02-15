@@ -47,6 +47,8 @@ function App() {
 
   // 디테일데이터 불러오기
   const getDetailData = async (serviceID) => {
+    // choosedItem 초기화
+    setChoosedItem([]);
     for (let i = 1; i <= 10; i++) {
       let API_URL2 = `${URL}${api_list[1]}?&page=${i}&perPage=1000&serviceKey=${API_KEY}`;
       const response = await axios.get(API_URL2);
