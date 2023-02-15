@@ -20,9 +20,9 @@
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"><img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"><img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"><img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"> <br> <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white"><img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"><img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=Expo&logoColor=white">
 
 ## Screenshot
-<p align='center'><img src="https://user-images.githubusercontent.com/112890661/218910239-3c5f7df6-06ed-490f-9ead-3124bebff1b9.png" width="300"> &nbsp;
-<img src="https://user-images.githubusercontent.com/112890661/218910322-0942b1ef-39f9-42ca-81c0-ba1d982bc885.png" width="300"> &nbsp;
-<img src="https://user-images.githubusercontent.com/112890661/218910391-4ff52b2b-edd2-41d1-b1d3-88d8ae68c2c2.png" width="300"></p>
+<p align='center'><img src="https://user-images.githubusercontent.com/112890661/218910239-3c5f7df6-06ed-490f-9ead-3124bebff1b9.png" width="250"> &nbsp;
+<img src="https://user-images.githubusercontent.com/112890661/218910322-0942b1ef-39f9-42ca-81c0-ba1d982bc885.png" width="250"> &nbsp;
+<img src="https://user-images.githubusercontent.com/112890661/218910391-4ff52b2b-edd2-41d1-b1d3-88d8ae68c2c2.png" width="250"></p>
 
 ## Install
   ```
