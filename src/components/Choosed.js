@@ -1,8 +1,6 @@
 // Choosed.js
 
 export default function Choosed({ choosedItem }) {
-  console.log(choosedItem);
-
   return (
     <>
       {choosedItem.map((e, i) => (
@@ -15,7 +13,7 @@ export default function Choosed({ choosedItem }) {
               <b>지원대상</b> : {e.지원대상}
             </p>
             <p>
-              <b>신청기한</b> : {e.신청기한 ? e.신청기한 : "없음"}{" "}
+              <b>신청기한</b> : {e.신청기한 ? e.신청기한 : "없음"}
             </p>
             <p>
               <b>지원유형</b> : {e.지원유형}
@@ -26,9 +24,13 @@ export default function Choosed({ choosedItem }) {
             <p>
               <b>주무부처</b> : {e.소관기관명}
             </p>
-            <p>
-              <b>접수기관</b> : {e.접수기관명 ? e.접수기관명 : "없음"}
-            </p>
+
+            {e.접수기관명 ? (
+              <p>
+                <b>접수기관</b> : {e.접수기관명}
+              </p>
+            ) : null}
+
             <p>
               <b>신청방법</b> : {e.신청방법}
             </p>
