@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 export default function ShowItems({ showList, getDetailData }) {
   return (
     <div className="items">
+      <p className="num-show">
+        Total <b>{showList.length}</b> services.
+      </p>
       {showList.map((item, i) => {
         return (
           <Link to="/detail" key={i}>

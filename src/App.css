@@ -303,7 +303,18 @@ h1 {
 
 .items {
   width: 100%;
-  padding: 20px;
+  padding: 10px 20px;
+}
+
+.items .num-show {
+  text-align: right;
+  margin-bottom: 10px;
+  font-size: 10px;
+  color: #666;
+}
+
+.items .num-show b {
+  font-size: 11px;
 }
 
 .items .item {
