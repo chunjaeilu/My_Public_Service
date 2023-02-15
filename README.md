@@ -261,28 +261,6 @@
   npm install react-loader-spinner
   ```
 - Loading 컴포넌트 생성
-  ```javascript
-  // Loading.js
-  import { MutatingDots } from "react-loader-spinner";
-
-  export default function Loading() {
-    return (
-      <div className="loading-box">
-        <MutatingDots
-          height="100"
-          width="100"
-          color="#3382E9"
-          secondaryColor="#A1EEFF"
-          radius="12.5"
-          ariaLabel="mutating-dots-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-        />
-      </div>
-    );
-  }
-  ```
 - 작업 진행되는동안 Loading 컴포넌트 출력
   ```javascript
   // Home.js
@@ -295,6 +273,42 @@
   {choosedItem.length !== 0 ? (<Choosed choosedItem={choosedItem} />) : (<Loading />)}
   ...
   ```
+
+### ISSUE_03. 스크롤 이슈
+> 페이지 이동시 스크롤 위치가 이동한 상태로 렌더링 되는 이슈
+
+#### Reason
+- 브라우저 스크롤 위치가 상태(state)에 기억되어 페이지를 이동해도 이전 페이지의 스크롤 위치를 유지하는 현상
+  
+#### Solution
+- `useLocation` Hook 사용해 path 이동시 스크롤을 상단으로 고정시킴
+  ```javascript
+  // ScrollToTop.js
+  import { useEffect } from "react";
+  import { useLocation } from "react-router-dom";
+
+  export default function ScrollToTop() {
+    const pathname = useLocation();
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+    return null;
+  }
+
+  // App.js
+  ...
+  return (
+    <BrowserRouter>
+      // 컴포넌트 출력
+      <ScrollToTop />
+      <Routes>
+        <Route .../>
+        ...
+      </Routes>
+    </BrowserRouter>
+  );
+  ```
+  
 ## Timetable
 
 ### 23.02.02(목)

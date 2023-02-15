@@ -6,6 +6,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Detail from "./pages/Detail";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const API_KEY =
@@ -131,6 +132,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route
           path="/"
