@@ -1,5 +1,6 @@
 import Choosed from "../components/Choosed";
 import Header from "../components/Header";
+import Loading from "../components/Loading";
 import Nav from "../components/Nav";
 
 export default function Detail({ getSearchData, choosedItem }) {
@@ -7,7 +8,11 @@ export default function Detail({ getSearchData, choosedItem }) {
     <div className="wrap">
       <Header getSearchData={getSearchData} />
       <main>
-        <Choosed choosedItem={choosedItem} />
+        {choosedItem.length !== 0 ? (
+          <Choosed choosedItem={choosedItem} />
+        ) : (
+          <Loading />
+        )}
       </main>
       <Nav />
     </div>

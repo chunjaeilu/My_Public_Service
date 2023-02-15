@@ -171,14 +171,16 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
 
 ## ISSUES
 
-### 반복 처리하는 `fetch`안에서 `useState()`로 관리하는 변수, 누적되지 않고 초기화 되는 이슈
-> DB가 여러 page로 나뉘어져 있고, 모든 데이터를 한번에 `fetch`하지 못해 반복문으로 처리하려 하였으나
->
-> `useState()`는 컴포넌트가 렌더링 될때마다 값을 초기화 하므로 반복문 안에서 `useState`를 여러번 사용할 수 없음
->
-> 이번 프로젝트에서는 `fetch` 대신 `axios`를 사용했으므로 `axios.all` 메서드를 이용해 multiple request 처리
->
-> 모든 데이터를 불러온 뒤 하나의 배열로 만들고 `useState`는 반복문에 포함시키는 것이 아니라 모든 작업이 완료된 뒤 한 번만 실행
+### ISSUE_01. 모든 데이터 불러오기 (multiple request)
+> 반복문 안에서 `useState()`로 관리하는 변수, 누적되지 않고 초기화 되는 이슈
+
+#### Reason
+- DB가 여러 page로 나뉘어져 있고, 모든 데이터를 한번에 호출하지 못해 반복문으로 처리하려 하였으나
+- `useState()`는 컴포넌트가 렌더링 될때마다 값을 초기화 하므로 반복문 안에서 `useState`를 여러번 사용할 수 없음
+
+#### Solution
+- 이번 프로젝트에서는 `fetch` 대신 `axios`를 사용했으므로 `axios.all` 메서드를 이용해 multiple request 처리
+- 모든 데이터를 불러온 뒤 하나의 배열로 만들고 `useState`는 반복문에 포함시키는 것이 아니라 모든 작업이 완료된 뒤 한 번만 실행
   ```javascript
   const getServiceListData = async () => {
     // axios.all : 여러 요청(multiple request)를 실행하는 메서드
@@ -220,6 +222,57 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
     });
   };
   ```
+
+### ISSUE_02. 런타임 이슈
+> 메인페이지 최초 마운트시 평균 응답속도 2000~4000ms, 디테일페이지 이동시 해당 정보 위치(API page)에 따라 응답속도 400ms~4000ms 까지 편차가 생김
+
+#### Reason
+- 페이지당 1000개의 데이터를 10회에 걸쳐 호출하다보니 기본적인 런타임이 오래 걸림
+- 메인페이지 : API 호출 >> 조회수 순 오름차순 정렬 >> topList 추출로 이어지는 작업로직이 길다
+- 디테일페이지 : 선택한 서비스 고유코드를 매개변수로 새로운 API를 호출(1000개, 10페이지)하고 일치하는 코드를 찾아야 하므로
+
+#### Solution
+- API에서 제공하는 정보량 때문에 생기는 이슈이므로 실질적인 런타임을 줄이는 것은 한계가 있음
+- API 호출하는 동안 Loading 화면을 출력
+- 활용 라이브러리 : `react-loader-spinner`
+  ```cmd
+  npm install react-loader-spinner
+  ```
+- Loading 컴포넌트 생성
+  ```javascript
+  // Loading.js
+  import { MutatingDots } from "react-loader-spinner";
+
+  export default function Loading() {
+    return (
+      <div className="loading-box">
+        <MutatingDots
+          height="100"
+          width="100"
+          color="#3382E9"
+          secondaryColor="#A1EEFF"
+          radius="12.5"
+          ariaLabel="mutating-dots-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </div>
+    );
+  }
+  ```
+- 작업 진행되는동안 Loading 컴포넌트 출력
+  ```javascript
+  // Home.js
+  ...
+  {topList.length !== 0 ? (<><TopList topList={topList} getDetailData={getDetailData} /><Theme getSearchData={getSearchData} /></>) : (<Loading />)}
+  ...
+
+  // Detail.js
+  ...
+  {choosedItem.length !== 0 ? (<Choosed choosedItem={choosedItem} />) : (<Loading />)}
+  ...
+  ```
 ## Timetable
 
 ### 23.02.02(목)
@@ -249,3 +302,9 @@ https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
 ### 23.02.10(금)
 - `/detail` 페이지 구현 및 기능 구현
 - 업데이트 기능명세서 작성 및 제출
+
+### 23.02.14(화)
+- 모든 데이터 불러오기 (multiple request) issue 처리
+
+### 23.02.15(수)
+- 런타임 issue 처리

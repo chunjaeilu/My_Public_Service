@@ -6,7 +6,6 @@ import "./App.css";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Detail from "./pages/Detail";
-import Loading from "./components/Loading";
 
 function App() {
   const API_KEY =
@@ -23,12 +22,9 @@ function App() {
   const [topList, setTopList] = useState([]);
   // Choosed Item
   const [choosedItem, setChoosedItem] = useState([]);
-  // Loading
-  const [loading, setLoading] = useState(null);
 
   // 서비스목록 불러오기
   const getServiceListData = async () => {
-    setLoading(true);
     const response = await axios.all([
       ...pages.map((page) =>
         axios.get(
@@ -45,7 +41,6 @@ function App() {
     setServiceList([...dataArr]);
     const top10List = dataArr.slice(0, 10);
     setTopList([...top10List]);
-    setLoading(false);
   };
   // console.log(topList);
 

@@ -1,15 +1,19 @@
-import Loader from "react-loader-spinner";
+import { MutatingDots } from "react-loader-spinner";
 
 export default function Loading() {
   return (
-    <SpinContainer>
-      <Loader
-        type="0val"
-        color="#3d66ba"
-        height={30}
-        width={30}
-        timeout={3000}
-      ></Loader>
-    </SpinContainer>
+    <div className="loading-box">
+      <MutatingDots
+        height="100"
+        width="100"
+        color="#3382E9"
+        secondaryColor="#A1EEFF"
+        radius="12.5"
+        ariaLabel="mutating-dots-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+      />
+    </div>
   );
 }
