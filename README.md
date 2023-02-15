@@ -1,19 +1,41 @@
 # 공공API 활용 앱 만들기 :: 공공서비스 조회 시스템
 
-## 배포사이트 URL
-https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
+## Distribution
+> Cloudtype
+>
+> URL : https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
 
 ## GOAL
+> React Project로 제작
+>
 > 행정안전부_대한민국 공공서비스 정보 API 활용
 > 
-> 대상연령, 담당부처, 키워드 등을 검색했을 때 해당하는 데이터를 출력
+> 담당부처, 키워드 등을 검색했을 때 해당하는 서비스를 출력
 > 
-> 사용자 위주의 간결하고 깔끔한 UI/UX
+> 특정 서비스 선택시 해당 서비스의 디테일한 정보를 출력
+> 
+> 모바일 환경에 최적화 된 간결하고 깔끔한 UI/UX
 
 ## Skills & Tools
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"><img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"><img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"><img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"> <br> <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white"><img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"><img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=Expo&logoColor=white">
 
-## 주요 구현 기능
+## Screenshot
+<p align='center'><img src="https://user-images.githubusercontent.com/112890661/218910239-3c5f7df6-06ed-490f-9ead-3124bebff1b9.png" width="250"> &nbsp;
+<img src="https://user-images.githubusercontent.com/112890661/218910322-0942b1ef-39f9-42ca-81c0-ba1d982bc885.png" width="250"> &nbsp;
+<img src="https://user-images.githubusercontent.com/112890661/218910391-4ff52b2b-edd2-41d1-b1d3-88d8ae68c2c2.png" width="250"></p>
+
+## Install
+  ```
+  $ npm install
+  ```
+  
+## Run
+  ```
+  $ npm start
+  ```
+- http://localhost:3000
+
+## Main functions
 ### API 호출
 > `axios` 를 이용해 API 호출
 > 
