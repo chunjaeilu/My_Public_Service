@@ -40,11 +40,16 @@ function App() {
     // showList 가공
     dataArr.sort((a, b) => b.조회수 - a.조회수);
     setServiceList([...dataArr]);
+
     const top10List = dataArr.slice(0, 10);
     setTopList([...top10List]);
   };
   // console.log(topList);
-
+  // let majorArr = serviceList.filter(
+  //   (e) => e.소관기관명 == "과학기술정보통신부"
+  // );
+  // let subArr = [...new Set(majorArr.map((e) => e.부서명))];
+  // console.log(subArr);
   // 디테일데이터 불러오기
   const getDetailData = async (serviceID) => {
     // choosedItem 초기화
