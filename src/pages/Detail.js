@@ -11,7 +11,7 @@ export default function Detail({ getSearchData, choosedItem }) {
         {choosedItem.length !== 0 ? (
           <Choosed choosedItem={choosedItem} />
         ) : (
-          <Loading />
+          <Loading desc="상세정보를 불러오는 중" />
         )}
       </main>
       <Nav />

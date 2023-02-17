@@ -131,7 +131,6 @@ function App() {
   useEffect(() => {
     getServiceListData();
   }, []);
-
   return (
     <BrowserRouter>
       <ScrollToTop />

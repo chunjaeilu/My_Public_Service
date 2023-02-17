@@ -1,6 +1,6 @@
 import { MutatingDots } from "react-loader-spinner";
 
-export default function Loading() {
+export default function Loading({ desc }) {
   return (
     <div className="loading-box">
       <MutatingDots
@@ -14,6 +14,7 @@ export default function Loading() {
         wrapperClass=""
         visible={true}
       />
+      <p className="loading-desc">{desc}</p>
     </div>
   );
 }

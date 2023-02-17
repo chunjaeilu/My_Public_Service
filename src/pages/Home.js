@@ -15,7 +15,7 @@ export default function Home({ topList, getSearchData, getDetailData }) {
             <Theme getSearchData={getSearchData} />
           </>
         ) : (
-          <Loading />
+          <Loading desc="서비스 목록을 불러오는 중" />
         )}
       </main>
       <Nav />
