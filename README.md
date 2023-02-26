@@ -1,6 +1,6 @@
 # 공공API 활용 앱 만들기 :: 공공서비스 조회 시스템
 
-## Distribution
+## Deployment
 > Cloudtype
 >
 > URL : https://web-my-public-service-cf24lcehrrvk.gksl2.cloudtype.app/
